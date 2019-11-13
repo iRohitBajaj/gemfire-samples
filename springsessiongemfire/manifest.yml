@@ -1,0 +1,11 @@
+---
+applications:
+- name: springsessiongemfire
+  path: target/springsessiongemfire-0.0.1-SNAPSHOT.war
+  timeout: 600
+  instances: 1
+  services:
+    - pdftest
+    - pcc-data
+  env:
+    JAVA_OPTS: '-Dgemfire.ssl-enabled-components=all -Dgemfire.ssl-keystore=/home/vcap/app/META-INF/keystore.jks -Dgemfire.ssl-keystore-password=changeit -Dgemfire.ssl-truststore=$HOME/WEB-INF/classes/truststore.jks -Dgemfire.ssl-truststore-password=changeit'
