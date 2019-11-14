@@ -64,6 +64,7 @@ public class Customer implements Serializable
         this.customerNumber = customerNumber;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.telephoneNumber = address.getPhoneNumber();
         this.primaryAddress = address;
     }
 

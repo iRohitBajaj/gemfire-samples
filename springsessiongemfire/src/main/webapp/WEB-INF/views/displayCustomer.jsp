@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -35,22 +35,47 @@
 <br><br>
 <div class="row">
     <h1>Customer Details</h1>
-    {{#customer}}
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3">Customer number:</div>
-            <div class="col-sm-9">{{customerNumber}}</div>
+            <div class="col-sm-9"><c:out value="${customer.customerNumber}"></c:out></div>
         </div>
         <div class="row">
             <div class="col-sm-3">First Name:</div>
-            <div class="col-sm-9">{{firstName}}</div>
+            <div class="col-sm-9"><c:out value="${customer.firstName}"></c:out></div>
         </div>
         <div class="row">
             <div class="col-sm-3">Last Name:</div>
-            <div class="col-sm-9">{{lastName}}</div>
+            <div class="col-sm-9"><c:out value="${customer.lastName}"></c:out></div>
+        </div>
+        <div class="row">
+             <div class="col-sm-3">Tel No#:</div>
+             <div class="col-sm-9"><c:out value="${customer.telephoneNumber}"></c:out></div>
+        </div>
+        <div class="row">
+             <div class="col-sm-3">Address:</div>
+             <div class="col-sm-9"><c:out value="${customer.primaryAddress.addressLine1}"></c:out>, <c:out value="${customer.primaryAddress.addressLine2}"></c:out>, <c:out value="${customer.primaryAddress.city}"></c:out>, <c:out value="${customer.primaryAddress.state}"></c:out>
+             <c:out value="${customer.primaryAddress.postalCode}"></c:out>, <c:out value="${customer.primaryAddress.country}"></c:out>
+             </div>
         </div>
     </div>
-    {{/customer}}
 </div>
+<table border="1" >
+	<caption><h2>Books</h2></caption>
+                <tr>
+                    <th>Item Number</th>
+                    <th>Description</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                </tr>
+	<c:forEach items="${books}" var="book">
+            	<tr>
+            		 <td><c:out value="${book.itemNumber}" /></td>
+            		 <td><c:out value="${book.description}" /></td>
+            		 <td><c:out value="${book.title}" /></td>
+            		 <td><c:out value="${book.author}" /></td>
+                </tr>
+    </c:forEach>
+	</table>
 </body>
 </html>
