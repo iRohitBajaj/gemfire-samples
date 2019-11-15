@@ -46,10 +46,9 @@ public class CustomerController {
     }
 
     @PostMapping("/changeCustomer")
-    public String changeCustomer(@RequestParam String customerNumber, @CookieValue (name="SESSION", required = false) String sessionId, Model model) {
+    public String changeCustomer(@RequestParam String customerNumber, @CookieValue (name="APP_SESSION_ID", required = false) String sessionId, Model model) {
         logger.info("In changeCustomer() processing customer number: " + customerNumber);
-        logger.info("SESSION = " + sessionId);
-
+        logger.info("APP_SESSION_ID = " + sessionId);
         Customer c = loadCustomer(customerNumber);
         if (c != null) {
             model.addAttribute("customer", loadCustomer(customerNumber));

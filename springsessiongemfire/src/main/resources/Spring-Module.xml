@@ -70,7 +70,16 @@
 
 	<!--4-->
 	<bean class="org.springframework.session.data.gemfire.config.annotation.web.http.GemFireHttpSessionConfiguration"
-		  p:maxInactiveIntervalInSeconds="30" p:poolName="DEFAULT"/>
+		  p:maxInactiveIntervalInSeconds="30" p:poolName="DEFAULT">
+	</bean>
+	<bean id="defaultCookieSerializer" class="org.springframework.session.web.http.DefaultCookieSerializer">
+		<property name="cookieName" value="APP_SESSION_ID" />
+		<property name="cookiePath" value="/"></property>
+	</bean>
+	<bean id="cookieHttpSessionIdResolver" class="org.springframework.session.web.http.CookieHttpSessionIdResolver">
+		<property name="cookieSerializer" ref="defaultCookieSerializer" />
+	</bean>
+
 	<!-- end::beans[] -->
 
 
